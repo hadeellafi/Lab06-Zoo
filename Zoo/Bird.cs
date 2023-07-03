@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Zoo.Interfaces;
 
 namespace Zoo
 {
@@ -22,16 +23,32 @@ namespace Zoo
             return "The bird is eating.";
         }
     }
-    public class Eagle : Bird
+    public class Eagle : Bird, IAttack, ISpeed
     {
+        public double AvgSpeed { get; set; }
+
         public Eagle(string name, int age, string featherColor, bool canFly) : base(name, age, featherColor, canFly)
         {
+            AvgSpeed = 80.0;
         }
 
         public override string Eat()
         {
             return "The eagle is eating fish.";
         }
+
+
+
+        public string WhenAttack()
+        {
+            return "The eagle swoops down and attacks its prey with its sharp talons.";
+        }
+
+        public string GetSpeed()
+        {
+            return $"The average speed of the eagle is {AvgSpeed} mph.";
+        }
+
     }
     public class Parrot : Bird
     {
@@ -44,6 +61,4 @@ namespace Zoo
             return "The parrot is eating seeds and fruits.";
         }
     }
-
-
 }

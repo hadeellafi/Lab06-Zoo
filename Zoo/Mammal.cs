@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Zoo.Interfaces;
 
 namespace Zoo
 {
@@ -20,25 +21,38 @@ namespace Zoo
         }
 
     }
-    public class Dog : Mammal
+    public class Dog : Mammal, IAttack, ISpeed
     {
         public string Breed { get; set; }
+        public double AvgSpeed { get; }
 
         public Dog(string name, int age, string furColor, string breed) : base(name, age, furColor)
         {
             Breed = breed;
+            AvgSpeed = 15.0; 
         }
+
         public override string Eat()
         {
             return "dog is eating";
         }
+
         public override string Sound()
         {
             return "Woof!";
         }
-        
 
+        public string WhenAttack()
+        {
+            return "The dog attacks with its sharp teeth.";
+        }
+
+        public string GetSpeed()
+        {
+            return $"The dog runs at an average speed of {AvgSpeed} miles per hour";
+        }
     }
+
     public class Cat : Mammal
     {
         public string EyeColor { get; set; }
@@ -57,5 +71,6 @@ namespace Zoo
             return "cat is eating";
         }
     }
+    
 
 }
